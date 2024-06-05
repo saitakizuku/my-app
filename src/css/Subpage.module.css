@@ -1,0 +1,148 @@
+.main {
+    width: 50%;
+    height: 50%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.img {
+    background-color: black;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 3.0s ease;
+}
+
+.videowrapper {
+    width: 100%;
+}
+
+.video {
+    margin-top: 90px;
+    text-align: center;
+    opacity: 0;
+    transition: all 3.0s 0s ease;
+}
+
+.comment {
+    opacity: 0;
+    transition: all 3.0s 0s ease;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 150px;
+    /* margin-top: px; */
+}
+
+.item {
+    text-align: left;
+}
+
+.info {
+    opacity: 0;
+    width: 15%;
+    white-space: nowrap;
+    transition: all 3.0s 0s ease;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.listitems {
+    list-style-type: none; /* リストの点を削除 */
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 90px 0 auto;
+    width: 100%;
+    justify-content: center;
+}
+
+.gallery .galleryimg {
+    flex: 1 1 30%;
+    max-width: 30%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.gallery .galleryimg img {
+    width: 100%;
+    height: auto;
+}
+
+.header {
+    text-align: center;
+    background-color: aqua;
+    text-shadow: 1px white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin: 0;
+}
+.listitem {
+    text-align: left;
+    margin-left: 0; /* リストの左マージンをリセット */
+    padding-left: 20px; /* リストアイテムの左パディングを追加 */
+}
+
+.button{
+    text-align: center;
+    margin-top: 100px;
+}
+.backmain{
+    background-color: #4CAF50; /* 緑の背景色 */
+    border: none; /* ボーダーを無しにする */
+    color: white; /* テキストの色を白にする */
+    padding: 15px 32px; /* 内側の余白を設定する */
+    text-align: center; /* テキストを中央揃えにする */
+    text-decoration: none; /* テキストの装飾を無しにする */
+    display: inline-block; /* インラインブロック要素にする */
+    font-size: 16px; /* フォントサイズを設定する */
+    margin: 4px 2px; /* 外側の余白を設定する */
+    cursor: pointer; /* カーソルをポインタにする */
+    border-radius: 8px; /* 角を丸くする */
+    transition: background-color 0.3s ease; /* 背景色の変化にトランジションを追加する */
+}
+.backmain:hover{
+    background-color: #45a049;
+}
+.backmain:active{
+    background-color: #3e8e41; /* クリック時にさらに濃い緑色にする */
+    box-shadow: 0 5px #666; /* ボックスシャドウを追加する */
+    transform: translateY(4px); /* ボタンを少し下に動かす */
+}
+/* 初期サイズの設定 */
+.iframe {
+    width: 800px;
+    height: 500px;
+}
+
+.videowrapper {
+    width: 100%;
+}
+
+/* 画面幅が800px以下の場合にiframeのサイズを変更 */
+@media screen and (max-width: 800px) {
+    .iframe {
+        width: 90%;
+        height: 300px;
+    }
+    .gallery {
+        flex-direction: column;
+        align-items: center; /* 中央揃えにする */
+    }
+
+    .gallery .galleryimg {
+        max-width: 90%;
+        margin-bottom: 20px; /* 画像間の余白を設定 */
+    }
+}
