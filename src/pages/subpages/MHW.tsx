@@ -1,12 +1,12 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import style from "../../css/Subpage.module.css";
+import mhw from "../../img/モンハン.webp";
 import Main from "../Main";
 import Button from "../common/Button";
-import Image from "../common/Image";
 import Comment from "../common/Coment";
-import Video from "../common/Video";
+import Image from "../common/Image";
 import Info from "../common/Info";
-import mhw from "../../img/モンハン.webp";
-import style from "../../css/Subpage.module.css";
+import Video from "../common/Video";
 
 const MHW: React.FC = () => {
 

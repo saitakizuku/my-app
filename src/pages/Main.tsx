@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
+import "../css/Main.css";
+import third from "../img/bronze.png";
+import cs2 from "../img/cs2.webp";
+import first from "../img/gold.png";
+import gravity from "../img/gravity.webp";
+import second from "../img/silver.png";
+import mhw from "../img/モンハン.webp";
+import Cs2 from "./subpages/CS";
 import Gravity from "./subpages/Gravity";
 import MHW from "./subpages/MHW";
-import Cs2 from "./subpages/CS";
-import "../css/Main.css";
-import gravity from "../img/gravity.webp";
-import mhw from "../img/モンハン.webp";
-import cs2 from "../img/cs2.webp";
-import gold from "../img/gold.png";
-import silver from "../img/silver.png";
-import bronze from "../img/bronze.png";
 
 function Main() {
     const [currentPage, setCurrentPage] = useState<string>("");
 
     const renderPage = () => {
-        switch(currentPage){
+        switch (currentPage) {
             case "gravity":
                 return <Gravity />;
             case "MHW":
@@ -22,13 +22,20 @@ function Main() {
             case "cs2":
                 return <Cs2 />;
             default:
-                return(
+                return (
                     <div className='wrapper'>
                         <h1 className='h'>TOP3 Games</h1>
-                        <Crown />
-                        <Image setCurrentPage={setCurrentPage} />
-                        <Names setCurrentPage={setCurrentPage} />
-                        <Catch />
+                        <div className='games'>
+                            <Game name="gravity" rankImg={third} mainImg={gravity} setPage={() => setCurrentPage("gravity")}>
+                                Gravity Daze。ハードのせいであまり売れてないゲーム
+                            </Game>
+                            <Game name='cs2' rankImg={first} mainImg={cs2} setPage={() => setCurrentPage("cs2")}>
+                                Counter-Strike。世界一のFPS
+                            </Game>
+                            <Game name='MHW' rankImg={second} mainImg={mhw} setPage={() => setCurrentPage("MHW")}>
+                                MonsterHunter WORLD。王道
+                            </Game>
+                        </div>
                     </div>
                 );
         }
@@ -41,50 +48,26 @@ function Main() {
     );
 }
 
-const Crown = () => {
-    return(
-        <div className='crown'>
-            <img className='bronze' src={bronze} alt='bronze' />
-            <img className='gold' src={gold} alt='gold' />
-            <img className='silver' src={silver} alt='silver' />
-        </div>
-    );
+interface Props {
+    name: string,
+    rankImg: string,
+    mainImg: string,
+    children: string,
+    setPage: () => void,
 }
 
-interface GameImagesProps{
-    setCurrentPage: (page: string) => void;
-}
-const Image: React.FC<GameImagesProps> = ({setCurrentPage}) =>{
-    return(
-        <div className="imgs">
-            <img className="gravity" src={gravity} alt="cat" onClick={() => setCurrentPage("gravity")} />
-            <img className='cs2' src={cs2} alt="cs2" onClick={() => setCurrentPage("cs2")} />
-            <img className="mhw" src={mhw} alt="mhw" onClick={() => setCurrentPage("MHW")} />
-        </div>
-    );
-}
+const Game: React.FC<Props> = ({ name, rankImg, mainImg, children, setPage }) => {
+    const child = children.split("。");
 
-interface NamesProps{
-    setCurrentPage: (page: string) => void;
-}
-const Names: React.FC<NamesProps> = ({setCurrentPage}) => {
-    return(
-        <div className='names'>
-            <h3 className="gravity third" onClick={() => setCurrentPage("gravity")}>3rd. Gravity Daze</h3>
-            <h3 className='cs2 first' onClick={() => setCurrentPage("cs2")}>1st. Counter Strike</h3>
-            <h3 className="mhw second" onClick={() => setCurrentPage("MHW")}>2nd. MonsterHunter WORLD</h3>
-        </div>
-    );
-}
-
-function Catch() {
-    return(
-        <div className='cathc'>
-            <h3 className='three'>ハードのせいであまり売れてないゲーム</h3>
-            <h3 className='one'>世界１のFPS</h3>
-            <h3 className='two'>王道</h3>
+    return (
+        <div className={`game ${name}`} onClick={setPage}>
+            <img className="rank-img" src={rankImg} alt={`${name} rank`} />
+            <img className="main-img" src={mainImg} alt={name} />
+            <h3 className='title'>{child[0]}</h3>
+            <h3 className='comment'>{child[1]}</h3>
         </div>
     );
 }
 
 export default Main;
+

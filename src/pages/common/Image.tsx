@@ -26,7 +26,7 @@ const Image:React.FC<Props> = ({className, src}) => {
 
     return(
         <div className={`${style.img} ${isVisible ? style.visible : ""}`} ref={ref}>
-            <img className={className} src={src} alt="img"></img>
+            <img className={className} src={src}></img>
         </div>
     )
 }

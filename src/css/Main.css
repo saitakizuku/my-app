@@ -1,103 +1,95 @@
-/* 通常のスタイル */
+/* 全体のスタイル */
+body {
+    background-color: #f0f0f0; /* ライトグレーの背景 */
+    color: #333; /* ダークグレーのテキストカラー */
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 h3 {
-    width: 33%;
-    font-family: 'Arial', sans-serif; /* フォントをArialに変更 */
+    width: 100%;
 }
 
 .h {
     text-align: center;
-    color: #ffffff; /* 文字の色を白に変更 */
-    background-color: #000000; /* 背景色を黒に変更 */
-    padding: 10px; /* ヘッダーの余白を追加 */
+    color: #ffffff;
+    background-color: #333;
+    padding: 20px;
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
-.imgs {
+.games {
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 20px;
+    padding: 0 20px;
 }
 
-.names {
+.game {
+    flex: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    justify-content: space-around;
-    color: #ffffff; /* 文字の色を白に変更 */
-    background-color: #000000; /* 背景色を黒に変更 */
-    padding: 10px; /* 余白を追加 */
+    margin: 0 10px;
+    max-width: calc(33% - 20px);
+    box-sizing: border-box;
+    background-color: #fff; /* カード背景色 */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.crown {
-    display: flex;
-    justify-content: space-around;
-    align-items: center; /* 画像を中央揃えにする */
+.rank-img,
+.main-img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 5px;
 }
 
-.cathc {
-    display: flex;
-    text-align: center;
-    justify-content: space-around;
-    color: #ffffff; /* 文字の色を白に変更 */
-    background-color: #000000; /* 背景色を黒に変更 */
-    padding: 10px; /* 余白を追加 */
-}
-
-.gravity {
+.rank-img {
     width: 30%;
 }
 
-.mhw {
-    width: 30%;
+.title {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
 }
 
-.cs2 {
-    width: 30%;
+.comment {
+    font-size: 1em;
+    margin: 10px 0;
+    color: #666;
 }
 
-.gold {
-    width: 10%;
-}
-
-.bronze {
-    width: 10%;
-}
-
-.silver {
-    width: 10%;
-}
-
-.first {
-    color: gold;
-}
-
-.second {
-    color: silver;
-}
-
-.third {
-    color: brown;
-}
-
-.gravity:hover {
-    opacity: 50%;
-}
-
-.mhw:hover {
-    opacity: 50%;
-}
-
-.cs2:hover {
-    opacity: 50%;
+.game:hover {
+    background-color: #f9f9f9;
 }
 
 @media screen and (max-width: 800px) {
-    .wrapper{
-        width: 100vw;
+    .wrapper {
+        width: 97vw;
     }
-    .names h3{
-        font-size: 100%;
+    .games {
+        flex-direction: column;
+        align-items: center;
     }
-    .cathc h3{
-        font-size: 100%;
+    .game {
+        width: 80%;
+        max-width: none;
+        margin: 10px 0;
+    }
+    .cs2 {
+        order: 0; /* 一番上に配置 */
+    }
+    .mhw {
+        order: 1; /* 真ん中に配置 */
+    }
+    .gravity {
+        order: 2; /* 一番下に配置 */
     }
 }
