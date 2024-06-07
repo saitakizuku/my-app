@@ -35,7 +35,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     const handleGameSelect = (game: string) => {
         setFlg(false);
 
-        axios.post(`${API_URL}/game_selection`, { game })
+        axios.post(`${API_URL}/api/game_selection`, { game })
             .then(() => {
                 setSuccessMessage('投票ありがとうございます！');
                 fetchGames();
@@ -47,7 +47,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     };
 
     const handleReset = () => {
-        axios.post(`${API_URL}/reset`)
+        axios.post(`${API_URL}/api/reset`)
             .then(() => {
                 setSuccessMessage('Database reset successfully');
                 fetchGames();
