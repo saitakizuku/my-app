@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 
 interface Game {
     game: string;
@@ -16,25 +16,26 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     const [successMessage, setSuccessMessage] = useState<string>('');
     const [games, setGames] = useState<Game[]>([]);
 
-    useEffect(() => {
-        fetchGames();
-    }, []);
+    const API_URL = process.env.REACT_APP_API_URL; // 環境変数からURLを取得
 
-    const fetchGames = () => {
-        // 投票数を取得
-        axios.get('http://localhost:5000/game_selection')
+    const fetchGames = useCallback(() => {
+        axios.get(`${API_URL}/game_selection`)
             .then((response) => {
                 setGames(response.data);
             })
             .catch((error) => {
                 console.error('Error fetching game selections:', error);
             });
-    };
+    }, [API_URL]);
+
+    useEffect(() => {
+        fetchGames();
+    }, [fetchGames]);
 
     const handleGameSelect = (game: string) => {
         setFlg(false);
 
-        axios.post('http://localhost:5000/game_selection', { game })
+        axios.post(`${API_URL}/game_selection`, { game })
             .then(() => {
                 setSuccessMessage('投票ありがとうございます！');
                 fetchGames();
@@ -46,7 +47,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     };
 
     const handleReset = () => {
-        axios.post('http://localhost:5000/reset')
+        axios.post(`${API_URL}/reset`)
             .then(() => {
                 setSuccessMessage('Database reset successfully');
                 fetchGames();
@@ -73,9 +74,4 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
 }
 
 export default Bort;
-
-
-
-
-
 

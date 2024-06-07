@@ -3,9 +3,11 @@ const sqlite3 = require('sqlite3').verbose();
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { v4: uuidv4 } = require('uuid');
+require('dotenv').config();  // dotenvを使用して環境変数をロード
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;  // ポートも環境変数で設定できるように
+const dbPath = process.env.DATABASE_PATH || 'game_selection.db';  // デフォルト値も設定可能
 
 const corsOptions = {
   origin: 'http://localhost:3000',
@@ -16,7 +18,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 
-const db = new sqlite3.Database('game_selection.db');
+const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
   db.run(
@@ -132,3 +134,4 @@ app.get('/game_selection', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
