@@ -22,7 +22,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
 
     const fetchGames = () => {
         // 投票数を取得
-        axios.get('http://localhost:5000/game_selection')
+        axios.get('https://lemon-meadow-0a6613210.5.azurestaticapps.net/game_selection')
             .then((response) => {
                 setGames(response.data);
             })
@@ -34,7 +34,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     const handleGameSelect = (game: string) => {
         setFlg(false);
 
-        axios.post('http://localhost:5000/game_selection', { game })
+        axios.post('https://lemon-meadow-0a6613210.5.azurestaticapps.net/game_selection', { game })
             .then(() => {
                 setSuccessMessage('投票ありがとうございます！');
                 fetchGames();
@@ -46,7 +46,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     };
 
     const handleReset = () => {
-        axios.post('http://localhost:5000/reset')
+        axios.post('https://lemon-meadow-0a6613210.5.azurestaticapps.net/reset')
             .then(() => {
                 setSuccessMessage('Database reset successfully');
                 fetchGames();
