@@ -8,7 +8,7 @@ const app = express();
 const port = 5000;
 
 const corsOptions = {
-  origin: 'https://lemon-meadow-0a6613210.5.azurestaticapps.net',
+  origin: 'http://localhost:3000',
   optionsSuccessStatus: 200 
 };
 
