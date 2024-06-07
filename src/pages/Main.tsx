@@ -9,11 +9,9 @@ import mhw from "../img/モンハン.webp";
 import Cs2 from "./subpages/CS";
 import Gravity from "./subpages/Gravity";
 import MHW from "./subpages/MHW";
-import Bort from './bort';
 
 function Main() {
     const [currentPage, setCurrentPage] = useState<string>("");
-    const [flg, setFlg] = useState<boolean>(true);
 
     const renderPage = () => {
         switch (currentPage) {
@@ -31,17 +29,14 @@ function Main() {
                             <Game name="gravity" rankImg={third} mainImg={gravity} setPage={() => setCurrentPage("gravity")}>
                                 <h3 className='title'>Gravity Daze</h3>
                                 <h3 className='comment'>ハードのせいであまり売れてないゲーム</h3>
-                                <Bort name='Gravity Daze' flg={flg} setFlg={setFlg}/>
                             </Game>
                             <Game name='cs2' rankImg={first} mainImg={cs2} setPage={() => setCurrentPage("cs2")}>
                                 <h3 className='title'>Counter-Strike</h3>
                                 <h3 className='comment'>世界一のFPS</h3>
-                                <Bort name='Counter-Strike' flg={flg} setFlg={setFlg}/>
                             </Game>
                             <Game name='MHW' rankImg={second} mainImg={mhw} setPage={() => setCurrentPage("MHW")}>
                                 <h3 className='title'>MonsterHunter WORLD</h3>
                                 <h3 className='comment'>王道</h3>
-                                <Bort name='MonsterHunter WORLD' flg={flg} setFlg={setFlg}/>
                             </Game>
                         </div>
                     </div>
