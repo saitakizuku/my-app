@@ -19,7 +19,7 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     const API_URL = process.env.REACT_APP_API_URL; // 環境変数からURLを取得
 
     const fetchGames = useCallback(() => {
-        axios.get(`${API_URL}/game_selection`)
+        axios.get(`${API_URL}/api/game_selection`)
             .then((response) => {
                 setGames(response.data);
             })
