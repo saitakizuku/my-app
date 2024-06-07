@@ -1,19 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 interface Game {
     game: string;
     count: number;
 }
 
-interface Props{
+interface Props {
     name: string;
     flg: boolean;
     setFlg: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Bort:React.FC<Props> = ({name, flg, setFlg}) => {
-    const [selectedGame, setSelectedGame] = useState<string>('');
+const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
     const [successMessage, setSuccessMessage] = useState<string>('');
     const [games, setGames] = useState<Game[]>([]);
 
@@ -33,7 +32,6 @@ const Bort:React.FC<Props> = ({name, flg, setFlg}) => {
     };
 
     const handleGameSelect = (game: string) => {
-        setSelectedGame(game);
         setFlg(false);
 
         axios.post('http://localhost:5000/game_selection', { game })
@@ -75,6 +73,7 @@ const Bort:React.FC<Props> = ({name, flg, setFlg}) => {
 }
 
 export default Bort;
+
 
 
 
