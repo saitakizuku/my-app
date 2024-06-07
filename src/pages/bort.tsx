@@ -74,4 +74,3 @@ const Bort: React.FC<Props> = ({ name, flg, setFlg }) => {
 }
 
 export default Bort;
-

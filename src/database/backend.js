@@ -6,15 +6,11 @@ const { v4: uuidv4 } = require('uuid');
 require('dotenv').config();  // dotenvを使用して環境変数をロード
 
 const app = express();
-const port = process.env.PORT || 5000;  // ポートも環境変数で設定できるように
-const dbPath = process.env.DATABASE_PATH || 'game_selection.db';  // デフォルト値も設定可能
+const port = process.env.PORT || 5000;
+const dbPath = process.env.DATABASE_PATH || 'game_selection.db';
 
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  optionsSuccessStatus: 200 
-};
-
-app.use(cors(corsOptions));
+// CORSの設定を緩くする
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 
@@ -134,4 +130,7 @@ app.get('/game_selection', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+
+
 
