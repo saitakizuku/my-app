@@ -9,9 +9,11 @@ import mhw from "../img/モンハン.webp";
 import Cs2 from "./subpages/CS";
 import Gravity from "./subpages/Gravity";
 import MHW from "./subpages/MHW";
+import Bort from './bort';
 
 function Main() {
     const [currentPage, setCurrentPage] = useState<string>("");
+    const [flg, setFlg] = useState<boolean>(true);
 
     const renderPage = () => {
         switch (currentPage) {
@@ -27,13 +29,19 @@ function Main() {
                         <h1 className='h'>TOP3 Games</h1>
                         <div className='games'>
                             <Game name="gravity" rankImg={third} mainImg={gravity} setPage={() => setCurrentPage("gravity")}>
-                                Gravity Daze。ハードのせいであまり売れてないゲーム
+                                <h3 className='title'>Gravity Daze</h3>
+                                <h3 className='comment'>ハードのせいであまり売れてないゲーム</h3>
+                                <Bort name='Gravity Daze' flg={flg} setFlg={setFlg}/>
                             </Game>
                             <Game name='cs2' rankImg={first} mainImg={cs2} setPage={() => setCurrentPage("cs2")}>
-                                Counter-Strike。世界一のFPS
+                                <h3 className='title'>Counter-Strike</h3>
+                                <h3 className='comment'>世界一のFPS</h3>
+                                <Bort name='Counter-Strike' flg={flg} setFlg={setFlg}/>
                             </Game>
                             <Game name='MHW' rankImg={second} mainImg={mhw} setPage={() => setCurrentPage("MHW")}>
-                                MonsterHunter WORLD。王道
+                                <h3 className='title'>MonsterHunter WORLD</h3>
+                                <h3 className='comment'>王道</h3>
+                                <Bort name='MonsterHunter WORLD' flg={flg} setFlg={setFlg}/>
                             </Game>
                         </div>
                     </div>
@@ -52,20 +60,19 @@ interface Props {
     name: string,
     rankImg: string,
     mainImg: string,
-    children: string,
+    children: React.ReactNode,
     setPage: () => void,
 }
 
 const Game: React.FC<Props> = ({ name, rankImg, mainImg, children, setPage }) => {
-    const child = children.split("。");
-
     return (
-        <div className={`game ${name}`} onClick={setPage}>
-            <img className="rank-img" src={rankImg} alt={`${name} rank`} />
-            <img className="main-img" src={mainImg} alt={name} />
-            <h3 className='title'>{child[0]}</h3>
-            <h3 className='comment'>{child[1]}</h3>
-        </div>
+        <div  className={`game ${name}`} >
+            <div onClick={setPage}>
+                <img className="rank-img" src={rankImg} alt={`${name} rank`} />
+                <img className="main-img" src={mainImg} alt={name} />
+            </div>
+            {children}
+        </div>    
     );
 }
 
